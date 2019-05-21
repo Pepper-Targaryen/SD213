@@ -4,6 +4,7 @@
 s --> np, vp.
 np --> det, n.        % Simple noun phrase
 np --> np, pp.        % Noun phrase + prepositional phrase
+%np --> np.
 vp --> v.     % Verb phrase, intransitive verb
 vp --> v, np.        % Verb phrase, verb + complement: like X
 vp --> v, pp.        % Verb phrase, verb + indirect complement : think of X

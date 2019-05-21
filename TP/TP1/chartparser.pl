@@ -88,15 +88,24 @@ add_edge(StartPos, _, Cat, _, [], _, _) :-	% generation
 	fail.	% forces backtracking
 add_edge(StartPos, EndPos, Cat, _, [], T, _) :-	% extension
 	% about to add an inactive edge
-	% Extending active edges
-	edge(StartPos1, StartPos, H, [], L, T1, _),
-	% . . .
-	T1 =.. [H|L],		% processing tree
-	append(L, [T], L1),
-	T2 =.. [H|L1],	% new tree for the edge about to be added
-	% ADD APPROPRIATE EDGE HERE using 'add_edge' recursively - you may also call 'trace_edge'
-	add_edge(StartPos1, StartPos, Cat, H, L, T2, 'extension'), 
+    % Extending active edges 
+    edge(StartPos1, StartPos, Cat1, Done, [Cat|Rest], T1, _), 
+    append(Done, [Cat], Done1), 
+    T1 =.. [H|L],        % processing tree
+    append(L, [T], L1),
+    T2 =.. [H|L1],
+    add_edge(StartPos1, EndPos, Cat1, Done1, Rest, T2, 'Extension'),
 	fail.	% forces backtracking
+add_edge(StartPos, EndPos, Cat, Done, [Cat1|Rest], T, _) :-     % extending current edge     
+	edge(EndPos, EndPos1, Cat1, _, [], T1, _),    
+	% existing inactive edge prolongating current edge     
+	% current edge can be extended     
+	append(Done, [Cat1], Done1),
+	T =.. [H|L],
+	append(L, [T1], L1),
+	T2 =.. [H|L1],
+	add_edge(StartPos, EndPos1, Cat, Done1, Rest, T2, 'Extending current edge'),
+	fail.     % forces backtracking
 add_edge(_, _, _, _, _, _).	% always succeeds
 
 
