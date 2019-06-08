@@ -123,11 +123,11 @@ rescue(FS, FS).			% no rescue by default
 rescue(FS1, FS3) :-		% rescue by repetition
 	repeat(FS1, FS2),
 	rescue(FS2, FS3).
-/*
+
 rescue(FS1, FS3) :-		% rescue by predication
 	predicate(FS1, FS2),
 	rescue(FS2, FS3).
-*/
+
 	
 repeat(FS, [im:Im1, dur:min(D1), vwp:g, occ:mult | FS4]) :-
 	%%%%% repeat:	synt:vp + occ:_ + vwp:f + dur:D --> occ:mult + vwp:g + dur:min(D+0.7) + det:_
