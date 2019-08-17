@@ -1,0 +1,91 @@
+# PSG3.txt
+# very small grammar for Chinese
+# 
+# Grammar:
+S  -> NP VP  # simple sentence rule
+
+NP -> N
+NP -> specifier Quantifier N
+NP -> N particle_struct N
+NP -> adj particle_struct N
+NP -> N accusative_marker N
+NP -> NP accusative_marker NP
+NP -> N accusative_marker NP
+
+
+VP -> V NP
+VP -> V
+
+
+
+
+# Lexicon:
+N   -> 约翰
+N   -> 我
+N   -> 武则天
+N   -> 女士
+N   -> 先生
+N   -> 狗
+N   -> 猫
+N   -> 老鼠
+N   -> 车
+N   -> 球
+N   -> 椅子
+N   -> 饭
+N   -> 领带
+N   -> 她
+N   -> 导弹
+
+
+Quantifier -> 个
+Quantifier -> 位
+Quantifier -> 只
+Quantifier -> 碗
+Quantifier -> 颗
+Quantifier -> 把
+Quantifier -> 枚
+
+adj -> 白色
+adj -> 黑色
+adj -> 高兴
+adj -> 难过
+
+specifier -> 这
+specifier -> 那
+specifier -> 一
+specifier -> 两
+specifier -> 三
+specifier -> 条
+
+
+Adv -> 总是
+Adv -> 昨天
+Adv -> 明天
+Adv -> 现在
+Adv -> V particle_adv
+
+Particle_time -> 过
+Particle_time -> 了
+Particle_time -> 吗
+Particle_time -> 着
+
+particle_adv -> 地
+particle_struct -> 的
+
+accusative_marker -> 把
+accusative_marker -> 被
+
+pre_pos -> 在
+pre_pos -> 于
+pre_pos -> 向
+
+
+V -> 吃
+V -> 去
+V -> 杀
+V -> 看见
+V -> 遇到
+V -> 做
+V -> 打
+V -> 有
+V -> V Particle_time
